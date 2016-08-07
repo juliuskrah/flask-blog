@@ -9,7 +9,13 @@
     {% endif %}
 </head>
 <body>
-    <div>J's blog: <a href="/index">Home</a> <a href="/login">Login</a></div>
+    <div>J's blog:
+        <a href="{{ url_for('index') }}">Home</a>
+        {% if g.user.is_authenticated %}
+        | <a href="{{ url_for('logout') }}">Logout</a></div>
+        {% else %}
+        | <a href="{{ url_for('login') }}">Login</a></div>
+        {% endif %}
     <hr>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
