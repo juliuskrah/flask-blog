@@ -10,3 +10,4 @@ flask-babel
 guess_language
 flipflop
 coverage
+psycopg2
