@@ -43,12 +43,12 @@ def index():
     user = g.user  # username
     posts = [
         {
-            'author': {'nickname': 'John'},
-            'post': 'This movie is awesome'
+            'author': user,
+            'body': 'This movie is awesome'
         },
         {
-            'author': {'nickname': 'Ekuba'},
-            'post': 'The best girl'
+            'author': user,
+            'body': 'Ekuba the best girl'
         }
     ]
     return render_template('index.html',
@@ -79,3 +79,20 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@app.route('/user/<nickname>')
+@login_required
+def user(nickname):
+    user = User.query.filter_by(nickname=nickname).first()
+    if user is None:
+        flash('User %s not found.' % nickname)
+        return redirect(url_for('index'))
+    post = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('user.html',
+                           title='Profile',
+                           user=user,
+                           posts=post)
