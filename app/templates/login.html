@@ -18,17 +18,21 @@
 <h1>Sign In</h1>
 <form action="" method="post" name="login">
     {{ form.hidden_tag() }}
-    <p>
-        Please enter your OpenID, or select one of the providers below:<br>
-        {{ form.openid(size=80) }}<br>
+    <div class="form-group">
+        <label>Please enter your OpenID, or select one of the providers below:</label>
+        {{ form.openid(size=80, class_='form-control') }}
         {% for error in form.openid.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span class="text-danger">[{{ error }}]</span>
         {% endfor %}<br>
         |{% for pr in providers %}
           <a href="javascript:set_openid('{{ pr.url }}', '{{ pr.name }}');">{{ pr.name }}</a> |
         {% endfor %}
-    </p>
-    <p>{{ form.remember_me }} Remember Me</p>
-    <p><input type="submit" value="Sign In"></p>
+    </div>
+    <div  class="checkbox">
+        <label>
+        {{ form.remember_me }} Remember Me
+        </label>
+    </div>
+    <p><input type="submit" value="Sign In" class="btn btn-primary"></p>
 </form>
 {% endblock %}

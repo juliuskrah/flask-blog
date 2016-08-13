@@ -30,7 +30,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-          {% if g.user.is_authenticated %}
+        {% if g.user.is_authenticated %}
         <li><a href="{{ url_for('user', nickname=g.user.nickname) }}">{{ g.user.nickname }}</a></li>
         <li><a href="{{ url_for('logout') }}">Logout</a></li>
         {% else %}
@@ -50,19 +50,20 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<hr>
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <div class="alert alert-success">
-        {% for message in messages %}
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>{{ message }}</strong>
-        {% endfor %}
-    </div>
-    {% endif %}
-{% endwith %}
-{% block content %}{% endblock %}
+<div class="container">
+    <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-success">
+            {% for message in messages %}
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{ message }}</strong>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</div>
 <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </body>
