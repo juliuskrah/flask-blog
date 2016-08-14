@@ -13,7 +13,9 @@
     </tr>
 </table>
 <hr>
-{% for post in posts %}
-    {% include "post.html" %}
-{% endfor %}
+<table class="table table-striped">
+    {% for post in posts %}
+        {% include "post.html" %}
+    {% endfor %}
+</table>
 {% endblock %}
