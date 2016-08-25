@@ -20,3 +20,8 @@ This upgrades your database to the current revision
 $ python db_downgrade.py
 ```
 This downgrades your database to the previous version. This is uncommon in most scenarios
+
+
+Setting up an email server on a development PC that does not have an email server is easy.
+Thanks to Python's SMTP debugging server, just open a new console window (command prompt for
+Windows users) and run the following to start a fake email server: `python -m smtpd -n -c DebuggingServer localhost:25`

@@ -90,5 +90,6 @@ ENV/
 
 .idea/
 app.db
+test.db
 db_repository/
 tmp/
