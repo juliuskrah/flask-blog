@@ -50,7 +50,7 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
+# *.log
 local_settings.py
 
 # Flask stuff:
@@ -92,4 +92,6 @@ ENV/
 app.db
 test.db
 db_repository/
-tmp/
+tmp/associations/
+tmp/nonces/
+tmp/temp/
