@@ -73,12 +73,11 @@ def login():
 
     if form.validate_on_submit():
         session['remember_me'] = form.remember_me.data
-        return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
+        return oid.try_login('https://me.yahoo.com', ask_for=['nickname', 'email'])
 
     return render_template('login.html',
                            title='Sign In',
-                           form=form,
-                           providers=app.config['OPENID_PROVIDERS'])
+                           form=form)
 
 
 @app.route('/logout')
